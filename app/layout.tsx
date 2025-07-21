@@ -5,6 +5,10 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
 
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+import { ourFileRouter } from "@/app/api/uploadthing/core";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,6 +36,9 @@ export default function RootLayout({
           `${geistSans.variable} ${geistMono.variable} antialiased`,
           "bg-white dark:bg-[#313338]"
         )}>
+          <NextSSRPlugin
+            routerConfig={extractRouterConfig(ourFileRouter)}
+          />
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
