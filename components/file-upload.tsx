@@ -23,7 +23,8 @@ export const FileUpload = ({
             <div className="relative h-20 w-20">
                 <Image
                     fill
-                    sizes=""
+                    sizes="100%"
+                    priority
                     src={value}
                     alt="Uploaded file"
                     className="rounded-full"

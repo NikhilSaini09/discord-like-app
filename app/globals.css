@@ -8,6 +8,13 @@ html, body, :root {
   height: 100%;
 }
 
+.cl-avatarBox,
+.cl-userButtonAvatarBox,
+.cl-internal-14s4tiz {
+  height: 48px !important;
+  width: 48px !important;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
