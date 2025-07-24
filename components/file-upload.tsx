@@ -23,7 +23,8 @@ export const FileUpload = ({
             <div className="relative h-20 w-20">
                 <Image
                     fill
-                    sizes="100%"
+                    sizes="80px"
+                    unoptimized  // optional for slow things
                     priority
                     src={value}
                     alt="Uploaded file"
@@ -45,7 +46,7 @@ export const FileUpload = ({
         <UploadDropzone
             endpoint={endpoint}
             onClientUploadComplete={(res) => {
-                onChange(res?.[0].url);
+                onChange(res?.[0].ufsUrl);
             }}
             onUploadError={(error: Error) => {
                 console.log(error);

@@ -24,6 +24,9 @@ export const NavigationSidebar = async () => {
                     profileId: profile.id
                 }
             }
+        },
+        orderBy: {
+            name: "asc"
         }
     });
 
