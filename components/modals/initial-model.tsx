@@ -106,7 +106,7 @@ export const InitialModal = () => {
                                             <Input
                                                 disabled={isLoading}
                                                 autoComplete="on"
-                                                className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
+                                                className="bg-zinc-300/50 dark:bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                                                 placeholder="Enter server name"
                                                 {...field}
                                             />
