@@ -27,6 +27,7 @@ export const MobileToggle = ({
                     <NavigationSidebar />
                 </div>
                 <ServerSidebar serverId={serverId} />
+                <div className="h-full w-10 dark:bg-[#2B2D31] bg-[#F2F3F5]"></div>
             </SheetContent>
         </Sheet>
     );
