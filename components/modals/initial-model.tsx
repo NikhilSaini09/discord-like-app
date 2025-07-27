@@ -17,12 +17,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FileUpload } from "@/components/file-upload";
 
+// const formSchema = z.object({
+//     name: z.string().min(1, {
+//         message: "Server name is required."
+//     }),
+//     imageUrl: z.string().min(1, {
+//         message: "Server image is required."
+//     })
+// });
+
 const formSchema = z.object({
     name: z.string().min(1, {
         message: "Server name is required."
     }),
-    imageUrl: z.string().min(1, {
-        message: "Server image is required."
+    image: z.object({
+        url: z.url({ message: "Server Image is required" }),
+        originalName: z.string().min(1, { message: "Server Image is required" }),
     })
 });
 
@@ -39,7 +49,11 @@ export const InitialModal = () => {
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
-            imageUrl: "",
+            image: {
+                url: "",
+                originalName: "",
+            }
+            // imageUrl: "",
         }
     });
 
@@ -66,7 +80,7 @@ export const InitialModal = () => {
             <DialogContent className="bg-white text-black p-0 overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
                     <DialogTitle className="text-2xl font-bold text-center">
-                        Customize your servers
+                        Customize your Server
                     </DialogTitle>
                     <DialogDescription className="text-center text-zinc-500">
                         Give your server a personality with a name and an image. You can always change it later.
@@ -79,13 +93,14 @@ export const InitialModal = () => {
                             <div className="flex items-center justify-center text-center">
                                 <FormField
                                     control={form.control}
-                                    name="imageUrl"
+                                    name="image"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormControl>
                                                 <FileUpload 
                                                     endpoint="serverImage"
-                                                    value={field.value}
+                                                    value={field.value.url}
+                                                    originalName={field.value.originalName}
                                                     onChange={field.onChange}
                                                 />
                                             </FormControl>

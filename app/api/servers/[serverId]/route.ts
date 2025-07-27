@@ -39,8 +39,9 @@ export async function PATCH(
     { params }: { params: Promise<{ serverId: string }> }
 ) {
     try {
-        const { name, imageUrl } = await req.json();
+        const { name, image } = await req.json();
         const { serverId } = await params;
+        const imageUrl = image.url;
 
         const profile = await currentProfile();
 

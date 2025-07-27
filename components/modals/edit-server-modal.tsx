@@ -22,8 +22,9 @@ const formSchema = z.object({
     name: z.string().min(1, {
         message: "Server name is required."
     }),
-    imageUrl: z.string().min(1, {
-        message: "Server image is required."
+    image: z.object({
+        url: z.url({ message: "Server Image is required" }),
+        originalName: z.string().min(1, { message: "Server Image is required" }),
     })
 });
 
@@ -38,25 +39,28 @@ export const EditServerModal = () => {
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
-            imageUrl: "",
+            image: {
+                url: "",
+                originalName: "",
+            }
         }
     });
 
-    useEffect(() => {
-        if(server) {
-            form.setValue("name", server.name);
-            form.setValue("imageUrl", server.imageUrl);
-        }
-    }, [server, form]);
-
     // useEffect(() => {
-    //     if(server && isModalOpen) {
-    //         form.reset({
-    //             name: server.name,
-    //             imageUrl: server.imageUrl,
-    //         });
+    //     if(server) {
+    //         form.setValue("name", server.name);
+    //         form.setValue("image.imageUrl", server.imageUrl);
     //     }
-    // }, [ isModalOpen, server, form]);
+    // }, [server, form]);
+
+    useEffect(() => {
+        if(server && isModalOpen) {
+            form.reset({
+                name: server.name,
+                image: {url: server.imageUrl},
+            });
+        }
+    }, [ isModalOpen, server, form]);
 
     const isLoading = form.formState.isSubmitting;
 
@@ -73,7 +77,7 @@ export const EditServerModal = () => {
     }
 
     const handleClose = () => {
-        // form.reset();
+        form.reset();
         onClose();
     }
 
@@ -95,13 +99,14 @@ export const EditServerModal = () => {
                             <div className="flex items-center justify-center text-center">
                                 <FormField
                                     control={form.control}
-                                    name="imageUrl"
+                                    name="image"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormControl>
                                                 <FileUpload 
                                                     endpoint="serverImage"
-                                                    value={field.value}
+                                                    value={field.value.url}
+                                                    originalName={field.value.originalName}
                                                     onChange={field.onChange}
                                                 />
                                             </FormControl>

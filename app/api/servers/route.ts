@@ -7,7 +7,8 @@ import { db } from "@/lib/db";
 
 export async function POST(req: Request) {
     try {
-        const { name, imageUrl } = await req.json();
+        const { name, image } = await req.json();
+        const imageUrl = image.url;
         const profile = await currentProfile();
 
         if (!profile) {

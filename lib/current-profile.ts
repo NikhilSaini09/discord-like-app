@@ -9,11 +9,9 @@ export const currentProfile = async () => {
         return null;
     }
 
-    const profile = await db.profile.findUnique({
+    return await db.profile.findUnique({
         where: {
             userId,
         }
     });
-
-    return profile;
 }
