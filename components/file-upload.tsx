@@ -167,7 +167,7 @@ export const FileUpload = ({
                     rel="noopener noreferrer"
                     className="ml-2 text-sm w-auto text-indigo-500 dark:text-indigo-400 hover:underline"
                 >
-                    {value}
+                    File Link
                 </a>
                 <button
                     onClick={() => onChange({ url: "", originalName: "" })}
