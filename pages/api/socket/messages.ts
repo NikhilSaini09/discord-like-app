@@ -14,10 +14,10 @@ export default async function handler(
 
     try {
         const profile = await currentProfilePages(req);
-        const { file } = req.body;
+        const { content, file } = req.body;
         const { serverId, channelId } = req.query;
         const fileUrl = file?.url;
-        const content = file?.originalName;
+        const content2 = file?.originalName;
 
         if(!profile) {
             return res.status(401).json({ error: "Unauthorized" });
@@ -30,8 +30,10 @@ export default async function handler(
         if(!channelId) {
             return res.status(400).json({ error: "Channel ID Missing" });
         };
+        
+        const finalContent = content2 || content;
 
-        if(!content) {
+        if(!finalContent) {
             return res.status(400).json({ error: "Content Missing" });
         };
 
@@ -72,7 +74,7 @@ export default async function handler(
 
         const message = await db.message.create({
             data: {
-                content,
+                content: finalContent,
                 fileUrl,
                 channelId: channelId as string,
                 memberId: member.id,
