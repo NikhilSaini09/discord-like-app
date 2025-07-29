@@ -6,6 +6,8 @@ import { currentProfile } from "@/lib/current-profile";
 import { getOrCreateConversation } from "@/lib/conversation";
 
 import { ChatHeader } from "@/components/chat/chat-header";
+import { ChatMessages } from "@/components/chat/chat-messages";
+import { ChatInput } from "@/components/chat/chat-input";
 
 interface MemberIdPageProps {
     params: Promise<{
@@ -56,6 +58,27 @@ const MemberIdPage = async ({
                 imageUrl={otherMember.profile.imageUrl}
                 serverId={serverId}
                 type="conversation"
+            />
+            <ChatMessages
+                name={otherMember.profile.name}
+                member={currentMember}
+                chatId={conversation.id}
+                apiUrl="/api/direct-messages"
+                socketUrl="/api/socket/direct-messages"
+                socketQuery={{
+                    conversationId: conversation.id,
+                }}
+                paramKey="conversationId"
+                paramValue={conversation.id}
+                type="conversation"
+            />
+            <ChatInput
+                apiUrl="/api/socket/direct-messages"
+                name={otherMember.profile.name}
+                type="conversation"
+                query={{
+                    conversationId: conversation.id,
+                }}
             />
         </div>
     );
