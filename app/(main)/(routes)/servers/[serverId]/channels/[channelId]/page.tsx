@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
-import { ChannelType } from "@/lib/generated/prisma";
+import { ChannelType } from "@prisma/client";
 import { currentProfile } from "@/lib/current-profile";
 
 import { MediaRoom } from "@/components/media-room";

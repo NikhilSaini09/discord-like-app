@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { DirectMessage } from "@/lib/generated/prisma";
+import { DirectMessage } from "@prisma/client";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 
@@ -66,7 +66,7 @@ export async function GET(
             });
         };
 
-        let nextCursor = null;
+        let nextCursor: string | null = null;
 
         if(messages.length === MESSAGES_BATCH) {
             nextCursor = messages[MESSAGES_BATCH - 1].id;

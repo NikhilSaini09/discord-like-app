@@ -11,7 +11,7 @@ import { useRouter, useParams } from "next/navigation";
 import { Edit, FileAudio, FileIcon, FileText, ShieldAlert, ShieldCheck, Trash, Video } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Member, MemberRole, Profile } from "@/lib/generated/prisma";
+import { Member, MemberRole, Profile } from "@prisma/client";
 
 import { useModal } from "@/hooks/use-modal-store";
 
@@ -164,7 +164,7 @@ export const ChatItem = ({
         })
     }, [form, content]);
 
-    let fileType = null;
+    let fileType: string | undefined = undefined;
     if(fileUrl) {
         fileType = content?.split(".").pop()?.toLowerCase();
     };

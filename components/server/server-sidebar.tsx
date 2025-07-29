@@ -3,7 +3,7 @@ import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from "lucide-react";
 
 import { db } from "@/lib/db";
 import { currentProfile } from "@/lib/current-profile";
-import { ChannelType, MemberRole } from "@/lib/generated/prisma";
+import { ChannelType, MemberRole } from "@prisma/client";
 
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";

@@ -2,7 +2,7 @@
 
 import { Plus, Settings } from "lucide-react";
 
-import { ChannelType, MemberRole } from "@/lib/generated/prisma";
+import { ChannelType, MemberRole } from "@prisma/client";
 
 import { ServerWithMemberWithProfile } from "@/types";
 import { useModal } from "@/hooks/use-modal-store";

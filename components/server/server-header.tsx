@@ -2,7 +2,7 @@
 
 import { ChevronDown, LogOut, PlusCircle, Settings, Trash, UserPlus, Users } from "lucide-react";
 
-import { MemberRole } from "@/lib/generated/prisma";
+import { MemberRole } from "@prisma/client";
 import { ServerWithMemberWithProfile } from "@/types";
 
 import {

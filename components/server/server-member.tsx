@@ -5,7 +5,7 @@ import { ShieldAlert, ShieldCheck } from "lucide-react";
 
 import {
     Member, MemberRole, Profile, Server
-} from "@/lib/generated/prisma";
+} from "@prisma/client";
 import { cn } from "@/lib/utils";
 
 import { UserAvatar } from "@/components/user-avatar";

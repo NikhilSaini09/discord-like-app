@@ -6,7 +6,7 @@ import qs from "query-string";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-import { MemberRole } from "@/lib/generated/prisma";
+import { MemberRole } from "@prisma/client";
 import { useModal } from "@/hooks/use-modal-store";
 import { ServerWithMemberWithProfile } from "@/types";
 import { UserAvatar } from "@/components/user-avatar";

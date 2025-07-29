@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { Loader2, ServerCrash } from "lucide-react";
 import { Fragment, useRef, ComponentRef } from "react";
 
-import { Member, Message, Profile } from "@/lib/generated/prisma";
+import { Member, Message, Profile } from "@prisma/client";
 
 import { useChatQuery } from "@/hooks/use-chat-query";
 import { useChatSocket } from "@/hooks/use-chat-socket";

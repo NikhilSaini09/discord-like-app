@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
-import { ChannelType } from "@/lib/generated/prisma";
+import { ChannelType } from "@prisma/client";
 
 import { 
     Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle

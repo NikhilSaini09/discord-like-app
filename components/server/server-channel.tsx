@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 
 import {
     Channel, ChannelType, MemberRole, Server
-} from "@/lib/generated/prisma";
+} from "@prisma/client";
 import { cn } from "@/lib/utils";
 
 import { ActionTooltip } from "@/components/action-tooltip";
