@@ -21,20 +21,24 @@ export const MediaRoom = ({
     const [token, setToken] = useState("");
 
     useEffect(() => {
-        if(!user?.firstName || !user?.lastName) return;
+        if (!user) return;
 
-        const name = `${user.firstName} ${user.lastName}`;
+        const name =
+            user.fullName?.trim() ||
+            `${user.firstName ?? ""} ${user.lastName ?? ""}`.trim() ||
+            user.username ||
+            "Guest";
 
         (async () => {
-            try{
-                const resp = await fetch(`/api/livekit?room=${chatId}&username=${name}`);
+            try {
+                const resp = await fetch(`/api/livekit?room=${encodeURIComponent(chatId)}&username=${encodeURIComponent(name)}`);
                 const data = await resp.json();
-                setToken(data.token)
+                setToken(data.token);
             } catch (e) {
                 console.log(e);
             }
         })();
-    }, [user?.firstName, user?.lastName, chatId]);
+    }, [user, chatId]);
 
     if (token === "") {
         return (

@@ -11,6 +11,16 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: '*.ufs.sh',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.ufs.sh',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'vokpl4r0fm.ufs.sh',
         pathname: '/**',
       },
