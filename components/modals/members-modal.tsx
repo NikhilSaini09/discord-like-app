@@ -78,13 +78,13 @@ export const MembersModal = () => {
 
     return (
         <Dialog open={isModalOpen} onOpenChange={onClose}>
-            <DialogContent className="bg-white text-black overflow-hidden">
+            <DialogContent className="bg-white dark:bg-[#313338] text-black dark:text-[#dbdee1] overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
-                    <DialogTitle className="text-2xl font-bold text-center">
+                    <DialogTitle className="text-2xl font-bold text-center text-zinc-800 dark:text-zinc-100">
                         Manage Members
                     </DialogTitle>
                     <DialogDescription
-                        className="text-center text-zinc-500"
+                        className="text-center text-zinc-500 dark:text-zinc-400"
                     >
                         {server?.members?.length} Members
                     </DialogDescription>
@@ -96,11 +96,11 @@ export const MembersModal = () => {
                         <div key={member.id} className="flex items-center gap-x-2 mb-6">
                             <UserAvatar src={member.profile.imageUrl} />
                             <div className="flex flex-col gap-y-1">
-                                <div className="text-xs font-semibold flex items-center gap-x-1">
+                                <div className="text-xs font-semibold flex items-center gap-x-1 text-zinc-800 dark:text-zinc-200">
                                     {member.profile.name}
                                     {roleIconMap[member.role]}
                                 </div>
-                                <p className="text-xs text-zinc-500">
+                                <p className="text-xs text-zinc-500 dark:text-zinc-400">
                                     {member.profile.email}
                                 </p>
                             </div>

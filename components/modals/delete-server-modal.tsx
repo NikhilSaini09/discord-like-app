@@ -36,17 +36,17 @@ export const DeleteServerModal = () => {
 
     return (
         <Dialog open={isModalOpen} onOpenChange={onClose}>
-            <DialogContent className="bg-white text-black p-0 overflow-hidden">
+            <DialogContent className="bg-white dark:bg-[#313338] text-black dark:text-[#dbdee1] p-0 overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
-                    <DialogTitle className="text-2xl font-bold text-center">
+                    <DialogTitle className="text-2xl font-bold text-center text-zinc-800 dark:text-zinc-100">
                         Delete Server
                     </DialogTitle>
-                    <DialogDescription className="text-center text-zinc-500">
-                        Are you sure you want to do his? <br />
+                    <DialogDescription className="text-center text-zinc-500 dark:text-zinc-400">
+                        Are you sure you want to do this? <br />
                         <span className="font-semibold text-indigo-500">{server?.name}</span> will be permanently deleted.
                     </DialogDescription>
                 </DialogHeader>
-                <DialogFooter className="bg-gray-100 px-6 py-4">
+                <DialogFooter className="bg-gray-100 dark:bg-[#2b2d31] px-6 py-4">
                     <div className="flex items-center justify-between w-full">
                         <Button
                             disabled={isLoading}
