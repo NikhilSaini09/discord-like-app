@@ -10,22 +10,26 @@ interface NavigationItemProps {
     id: string;
     imageUrl: string;
     name: string;
+    defaultChannelId?: string;
 };
 
 export const NavigationItem = ({
     id,
     imageUrl,
-    name
+    name,
+    defaultChannelId,
 }: NavigationItemProps) => {
     const params = useParams();
     const router = useRouter();
 
+    const targetUrl = defaultChannelId ? `/servers/${id}/channels/${defaultChannelId}` : `/servers/${id}`;
+
     const onClick = () => {
-        router.push(`/servers/${id}`);
+        router.push(targetUrl);
     }
 
     const onMouseEnter = () => {
-        router.prefetch(`/servers/${id}`);
+        router.prefetch(targetUrl);
     }
 
     return (
@@ -42,13 +46,13 @@ export const NavigationItem = ({
                 title="Navigate to server"
             >
                 <div className={cn(
-                    "absolute left-0 bg-primary rounded-r-full transition-all w-[4px]",
-                    params?.serverId !== id && "group-hover:h-[20px]",
-                    params?.serverId === id ? "h-[36px]" : "h-[8px]"
+                    "absolute left-0 bg-primary rounded-r-full transition-all w-1",
+                    params?.serverId !== id && "group-hover:h-5",
+                    params?.serverId === id ? "h-9" : "h-2"
                 )} />
                 <div className={cn(
-                    "relative group flex mx-3 h-[48px] w-[48px] rounded-[24px] group-hover:rounded-[16px] transition-all overflow-hidden",
-                    params?.serverId === id && "bg-primary/10 text-primary rounded-[16px]"
+                    "relative group flex mx-3 h-12 w-12 rounded-3xl group-hover:rounded-2xl transition-all overflow-hidden",
+                    params?.serverId === id && "bg-primary/10 text-primary rounded-2xl"
                 )}>
                     <Image
                         fill

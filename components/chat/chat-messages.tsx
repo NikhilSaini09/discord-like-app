@@ -31,6 +31,8 @@ interface ChatMessagesProps {
     paramKey: "channelId" | "conversationId";
     paramValue: string;
     type: "channel" | "conversation";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    initialMessages?: any[];
 }
 
 export const ChatMessages = ({
@@ -42,7 +44,8 @@ export const ChatMessages = ({
     socketQuery,
     paramKey,
     paramValue,
-    type
+    type,
+    initialMessages,
 }: ChatMessagesProps) => {
     const queryKey = `chat:${chatId}`;
     const addKey = `chat:${chatId}:messages`;
@@ -61,7 +64,8 @@ export const ChatMessages = ({
         queryKey,
         apiUrl,
         paramKey,
-        paramValue
+        paramValue,
+        initialMessages,
     });
 
     useChatSocket({ queryKey, addKey, updateKey });
@@ -73,7 +77,7 @@ export const ChatMessages = ({
         count: data?.pages?.[0]?.items?.length ?? 0
     })
 
-    if(status === "pending") {
+    if((status as string) === "pending") {
         return (
             <div className="flex flex-col flex-1 justify-center items-center">
                 <Loader2 className="h-7 w-7 text-zinc-500 animate-spin my-4" />
@@ -133,7 +137,7 @@ export const ChatMessages = ({
                                 fileUrl={message.fileUrl}
                                 deleted={message.deleted}
                                 currentMember={member}
-                                isUpdated={message.updatedAt !== message.createdAt}
+                                isUpdated={new Date(message.updatedAt).getTime() !== new Date(message.createdAt).getTime()}
                                 socketUrl={socketUrl}
                                 socketQuery={socketQuery}
                             />

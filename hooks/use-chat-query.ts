@@ -8,13 +8,16 @@ interface ChatQueryProps {
     apiUrl: string;
     paramKey: "channelId" | "conversationId";
     paramValue: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    initialMessages?: any[];
 };
 
 export const useChatQuery = ({
     queryKey,
     apiUrl,
     paramKey,
-    paramValue
+    paramValue,
+    initialMessages,
 }: ChatQueryProps) => {
     const { isConnected } = useSocket();
 
@@ -43,7 +46,14 @@ export const useChatQuery = ({
         structuralSharing: false,
         initialPageParam: undefined,
         getNextPageParam: (lastPage) => lastPage?.nextCursor,
-        refetchInterval: isConnected ? false : 1000
+        refetchInterval: isConnected ? false : 1000,
+        initialData: initialMessages !== undefined ? {
+            pages: [{
+                items: initialMessages,
+                nextCursor: initialMessages.length === 10 ? initialMessages[initialMessages.length - 1].id : null,
+            }],
+            pageParams: [undefined],
+        } : undefined,
     });
 
     return {

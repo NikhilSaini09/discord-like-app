@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { ChannelType } from "@prisma/client";
 
 import { 
-    Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle
+    Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle
 } from "@/components/ui/dialog";
 import {
     Form, FormField, FormItem, FormLabel, FormControl, FormMessage
@@ -99,6 +99,9 @@ export const EditChannelModal = () => {
                     <DialogTitle className="text-2xl font-bold text-center text-zinc-800 dark:text-zinc-100">
                         Edit Channel
                     </DialogTitle>
+                    <DialogDescription className="text-center text-zinc-500 dark:text-zinc-400">
+                        Update your channel name or type.
+                    </DialogDescription>
                 </DialogHeader>
 
                 <Form {...form}>

@@ -33,6 +33,9 @@ export const SocketProvider = ({
         const socketInstance = new (ClientIO as any)(process.env.NEXT_PUBLIC_SITE_URL!, {
             path: "/api/socket/io",
             addTrailingSlash: false,
+            reconnectionAttempts: 3,
+            reconnectionDelay: 5000,
+            timeout: 5000,
         });
 
         socketInstance.on("connect", () => {
@@ -40,6 +43,10 @@ export const SocketProvider = ({
         });
 
         socketInstance.on("disconnect", () => {
+            setIsConnected(false);
+        });
+
+        socketInstance.on("connect_error", () => {
             setIsConnected(false);
         });
 

@@ -57,6 +57,23 @@ const MemberIdPage = async ({
 
     const otherMember = memberOne.profileId === profile.id ? memberTwo : memberOne;
 
+    const messages = !video ? await db.directMessage.findMany({
+        take: 10,
+        where: {
+            conversationId: conversation.id,
+        },
+        include: {
+            member: {
+                include: {
+                    profile: true,
+                },
+            },
+        },
+        orderBy: {
+            createdAt: "desc",
+        },
+    }) : [];
+
     return (
         <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
             <ChatHeader
@@ -86,6 +103,7 @@ const MemberIdPage = async ({
                         paramKey="conversationId"
                         paramValue={conversation.id}
                         type="conversation"
+                        initialMessages={JSON.parse(JSON.stringify(messages))}
                     />
                     <ChatInput
                         apiUrl="/api/socket/direct-messages"

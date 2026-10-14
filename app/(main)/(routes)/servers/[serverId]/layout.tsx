@@ -29,7 +29,10 @@ const ServerIdLayout = async ({
                     profileId: profile.id,
                 }
             }
-        }
+        },
+        select: {
+            id: true,
+        },
     });
 
     if(!server) {

@@ -90,7 +90,7 @@ export const MembersModal = () => {
                     </DialogDescription>
                 </DialogHeader>
                 <ScrollArea
-                    className="mt-8 max-h-[420px] pr-6"
+                    className="mt-8 max-h-105 pr-6"
                 >
                     {server?.members?.map((member) => (
                         <div key={member.id} className="flex items-center gap-x-2 mb-6">

@@ -28,18 +28,35 @@ const ChannelIdPage = async ({
         return redirectToSignIn();
     }
 
-    const channel = await db.channel.findUnique({
-        where: {
-            id: channelId,
-        },
-    });
-
-    const member = await db.member.findFirst({
-        where: {
-            serverId: serverId,
-            profileId: profile.id,
-        },
-    });
+    const [channel, member, messages] = await Promise.all([
+        db.channel.findUnique({
+            where: {
+                id: channelId,
+            },
+        }),
+        db.member.findFirst({
+            where: {
+                serverId: serverId,
+                profileId: profile.id,
+            },
+        }),
+        db.message.findMany({
+            take: 10,
+            where: {
+                channelId,
+            },
+            include: {
+                member: {
+                    include: {
+                        profile: true,
+                    },
+                },
+            },
+            orderBy: {
+                createdAt: "desc",
+            },
+        }),
+    ]);
 
     if(!channel || !member) {
         return redirect("/");
@@ -67,6 +84,7 @@ const ChannelIdPage = async ({
                         paramKey="channelId"
                         paramValue={channel.id}
                         type="channel"
+                        initialMessages={JSON.parse(JSON.stringify(messages))}
                     />
                     <ChatInput
                         apiUrl="/api/socket/messages"

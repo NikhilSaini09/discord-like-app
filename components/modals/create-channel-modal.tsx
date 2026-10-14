@@ -11,7 +11,7 @@ import { useParams, useRouter } from "next/navigation";
 import { ChannelType } from "@prisma/client";
 
 import { 
-    Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle
+    Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle
 } from "@/components/ui/dialog";
 import {
     Form, FormField, FormItem, FormLabel, FormControl, FormMessage
@@ -106,6 +106,9 @@ export const CreateChannelModal = () => {
                     <DialogTitle className="text-2xl font-bold text-center text-zinc-800 dark:text-zinc-100">
                         Create Channel
                     </DialogTitle>
+                    <DialogDescription className="text-center text-zinc-500 dark:text-zinc-400">
+                        Create a channel to start talking or hanging out with your friends.
+                    </DialogDescription>
                 </DialogHeader>
 
                 <Form {...form}>

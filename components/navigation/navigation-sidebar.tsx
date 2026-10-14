@@ -27,6 +27,14 @@ export const NavigationSidebar = async () => {
                 }
             }
         },
+        include: {
+            channels: {
+                where: {
+                    name: "general",
+                },
+                take: 1,
+            },
+        },
         orderBy: {
             name: "asc"
         }
@@ -45,6 +53,7 @@ export const NavigationSidebar = async () => {
                             id={server.id}
                             name={server.name}
                             imageUrl={server.imageUrl}
+                            defaultChannelId={server.channels[0]?.id}
                         />
                     </div>
                 ))}

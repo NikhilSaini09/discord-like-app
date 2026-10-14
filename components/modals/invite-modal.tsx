@@ -5,7 +5,7 @@ import { Check, Copy, RefreshCw } from "lucide-react";
 import { useState } from "react";
 
 import { 
-    Dialog, DialogContent, DialogHeader, DialogTitle
+    Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -54,6 +54,9 @@ export const InviteModal = () => {
                     <DialogTitle className="text-2xl font-bold text-center text-zinc-800 dark:text-zinc-100">
                         Invite Friends
                     </DialogTitle>
+                    <DialogDescription className="text-center text-zinc-500 dark:text-zinc-400">
+                        Share this link with your friends to give them access to this server.
+                    </DialogDescription>
                 </DialogHeader>
                 <div className="p-6">
                     <Label className="uppercase text-xs font-bold text-zinc-500 dark:text-zinc-400">

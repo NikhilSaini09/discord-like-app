@@ -13,11 +13,23 @@ const SetupPage = async () => {
                     profileId: profile.id
                 }
             }
-        }
+        },
+        include: {
+            channels: {
+                where: {
+                    name: "general",
+                },
+                take: 1,
+            },
+        },
     });
 
     if (server) {
-        redirect(`/servers/${server.id}`);
+        const initialChannel = server.channels[0];
+        if (initialChannel) {
+            return redirect(`/servers/${server.id}/channels/${initialChannel.id}`);
+        }
+        return redirect(`/servers/${server.id}`);
     }
 
     return (
