@@ -24,6 +24,10 @@ export const NavigationItem = ({
         router.push(`/servers/${id}`);
     }
 
+    const onMouseEnter = () => {
+        router.prefetch(`/servers/${id}`);
+    }
+
     return (
         <ActionTooltip
             side="right"
@@ -32,6 +36,7 @@ export const NavigationItem = ({
         >
             <button
                 onClick={onClick}
+                onMouseEnter={onMouseEnter}
                 className="group relative flex items-center"
                 type="button"
                 title="Navigate to server"

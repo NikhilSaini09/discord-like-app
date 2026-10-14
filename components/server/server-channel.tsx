@@ -38,6 +38,10 @@ export const ServerChannel = ({
         router.push(`/servers/${params?.serverId}/channels/${channel.id}`)
     };
 
+    const onMouseEnter = () => {
+        router.prefetch(`/servers/${params?.serverId}/channels/${channel.id}`);
+    };
+
     const onAction = (e: React.MouseEvent, action: ModalType) => {
         e.stopPropagation();
         onOpen(action, { channel, server });
@@ -46,6 +50,7 @@ export const ServerChannel = ({
     return (
         <button
             onClick={onClick}
+            onMouseEnter={onMouseEnter}
             type="button"
             className={cn(
                 "group px-2 py-2 rounded-md flex items-center gap-x-2 w-full hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50 transition mb-1",

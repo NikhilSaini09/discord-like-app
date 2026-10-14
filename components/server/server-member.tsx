@@ -34,9 +34,14 @@ export const ServerMember = ({
         router.push(`/servers/${server?.id}/conversations/${member.id}`);
     };
 
+    const onMouseEnter = () => {
+        router.prefetch(`/servers/${server?.id}/conversations/${member.id}`);
+    };
+
     return (
         <button
             onClick={onClick}
+            onMouseEnter={onMouseEnter}
             type="button"
             className={cn(
                 "group px-2 py-2 rounded-md flex items-center gap-x-2 w-full hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50 transition mb-1",
