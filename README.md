@@ -6,7 +6,7 @@ A full-stack, feature-packed Discord clone built with **Next.js 15**, **React 19
 
 ## Live Demos
 
-- **Vercel (Instant CDN & Serverless Fallback):** [https://your-app-name.vercel.app](https://your-app-name.vercel.app)
+- **Vercel (Instant CDN & Serverless Fallback):** [https://discord-like-app-delta.vercel.app/](https://discord-like-app-delta.vercel.app/)
 - **Render (Persistent WebSockets):** [https://your-app-name.onrender.com](https://your-app-name.onrender.com)
 
 ---
