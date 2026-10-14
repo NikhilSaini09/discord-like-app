@@ -112,7 +112,7 @@ export const CreateChannelModal = () => {
                 </DialogHeader>
 
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                    <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="off" className="space-y-8">
                         <div className="space-y-8 px-6">
                             <FormField 
                                 control = {form.control}
@@ -125,7 +125,7 @@ export const CreateChannelModal = () => {
                                         <FormControl>
                                             <Input
                                                 disabled={isLoading}
-                                                autoComplete="on"
+                                                autoComplete="off"
                                                 className="bg-zinc-300/50 dark:bg-[#1e1f22] border-0 focus-visible:ring-0 text-black dark:text-zinc-200 focus-visible:ring-offset-0"
                                                 placeholder="Enter Channel name"
                                                 {...field}

@@ -94,7 +94,7 @@ export const EditServerModal = () => {
                 </DialogHeader>
 
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                    <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="off" className="space-y-8">
                         <div className="space-y-8 px-6">
                             <div className="flex items-center justify-center text-center">
                                 <FormField
@@ -126,7 +126,7 @@ export const EditServerModal = () => {
                                         <FormControl>
                                             <Input
                                                 disabled={isLoading}
-                                                autoComplete="on"
+                                                autoComplete="off"
                                                 className="bg-zinc-300/50 dark:bg-[#1e1f22] border-0 focus-visible:ring-0 text-black dark:text-zinc-200 focus-visible:ring-offset-0"
                                                 placeholder="Enter server name"
                                                 {...field}

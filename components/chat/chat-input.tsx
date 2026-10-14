@@ -60,7 +60,7 @@ export const ChatInput = ({
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
+            <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="off">
                 <FormField
                     control={form.control}
                     name="content"
@@ -78,6 +78,7 @@ export const ChatInput = ({
                                     </button>
                                     <Input
                                         disabled={isLoading}
+                                        autoComplete="off"
                                         className="px-14 py-6 bg-zinc-200/90 dark:bg-zinc-700/75 border-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 text-zinc-600 dark:text-zinc-200"
                                         placeholder={`Message ${type === "conversation" ? name : "#"+name}`}
                                         {...field}
